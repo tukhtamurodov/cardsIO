@@ -9,12 +9,13 @@ const PORT = process.env.PORT || 9090;
 
 const app = express();
 
+app.use("/uploads", express.static(path.join(process.cwd(), "src","uploads")));
 app.use(express.urlencoded());
 app.use(fileUpload());
 app.set("view engine", "ejs");
 app.set("views", path.join(process.cwd(), "src", "views"));
-app.use("/uploads", express.static(path.join(process.cwd(), "src")));
 
 app.use(routes);
+
 app.use(errorHanligMidleware)
 app.listen(PORT, console.log(PORT));

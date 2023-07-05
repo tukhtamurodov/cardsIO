@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cards</title>
-</head>
-<body>
-  <h1>Admin Panel</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cards</title>
+  </head>
+  <body>
+    <h1>Admin Panel</h1>
 
-  <form action="/card" method="post" enctype="multipart/form-data">
-    <input type="text" name="name" placeholder="name">
-    <input type="file" name="image" placeholder="chose img">
-    <button>Add Card</button>
-  </form>
+    <form action="/card" method="post" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="name" />
+      <input type="file" name="image" placeholder="chose img" />
+      <button>Add Card</button>
+    </form>
 
-  
-
-
-</body>
+    <% for(let index = 0 ; index < cards.length ; index++){ %>
+    <div>
+      <div>
+        <span><%= index+1 %>. </span>
+        <%= cards[index].name %>
+      </div>
+      <div>
+        <img src="<%= cards[index].image %>" alt="cards" />
+      </div>
+    </div>
+    <% } %>
+  </body>
 </html>

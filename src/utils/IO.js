@@ -1,7 +1,9 @@
 import { readFile, writeFile } from "fs";
-import { join } from "path";
+import path, { join} from "path";
 const read = (dir) => {
+
   return new Promise((resolve, reject) => {
+    
     readFile(join(process.cwd(), "src", "models", dir), (err, data) => {
       if (err) reject(err.message);
 
@@ -13,7 +15,7 @@ const read = (dir) => {
 const write = (dir, data) => {
   return new Promise((resolve, reject) => {
     writeFile(
-      join(process.cwd(), "src", "modelds", dir),
+      join(process.cwd(), "src", "models", dir),
       JSON.stringify(data, null, 2),
       (err) => {
         if (err) reject(err.message);

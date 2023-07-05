@@ -2,9 +2,8 @@ import custonError from "../errorHanler/custonError.js";
 import { read } from "../utils/IO.js";
 
 export default async (req, res, next) => {
-  const cards = await read("cards.odels.json").catch((err) => {
-    if (err) next(new custonError("Can't read models of cards"));
+  const cards = await read("cards.models.json").catch((err) => {
+    if (err) return next(new custonError("Can't read models of cards"));
   });
-
-  res.render("index");
+  return res.render("index", { cards });
 };

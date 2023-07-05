@@ -17,7 +17,7 @@ export default async (req, res, next) => {
   });
 
   cards.push({
-    id: cards?.at(-1)?.id || 1,
+    id: cards?.at(-1)?.id+1 || 1,
     name,
     image: "/uploads/" + imageName,
   });
@@ -26,5 +26,6 @@ export default async (req, res, next) => {
     next(new custonError(err.message, 500))
   );
 
-  res.json("ok");
+
+  return res.redirect("/");
 };
